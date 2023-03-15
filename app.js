@@ -4,6 +4,7 @@ getUser(user);
 let input = document.querySelector('#input');
 
 
+
 function getUser(user) {
   const url = 'https://api.github.com/users/' + user;
   let request = new XMLHttpRequest();
@@ -18,9 +19,13 @@ function getUser(user) {
         let answer = request.response
         let username = answer.name;
         let location = answer.location;
+        let website = answer.blog;
+        let joineddate = answer.created_at;
         let description = answer.bio;
         let profilepicture = answer.avatar_url
         document.querySelector("#username").textContent = username;
+        document.querySelector("#website").textContent = website;
+        document.querySelector("#location").textContent = location;
         document.querySelector("#description").textContent = description;
         document.getElementById("profilepicture").src = profilepicture;
 
