@@ -19,13 +19,30 @@ function getUser(user) {
         let answer = request.response
         let username = answer.name;
         let location = answer.location;
+        if(location === null){
+          location = "No given location";
+        } else {
+          let location = answer.location;
+        }
         let website = answer.blog;
+        if(website == ""){
+           website = "No website";
+        } else {
+          let website = answer.blog;
+        }
         let joineddate = answer.created_at;
+        let date = new Date(joineddate);
+        let  lastactivitydate= answer.updated_at;
+        let lastactivity = new Date(lastactivitydate);
         let description = answer.bio;
+        let profileurl = answer.html_url;
         let profilepicture = answer.avatar_url
         document.querySelector("#username").textContent = username;
         document.querySelector("#website").textContent = website;
+        document.querySelector("#joineddate").textContent = date.toLocaleDateString();
+        document.querySelector("#lastactivity").textContent = lastactivity.toLocaleDateString();
         document.querySelector("#location").textContent = location;
+        document.getElementById("url").href= profileurl;
         document.querySelector("#description").textContent = description;
         document.getElementById("profilepicture").src = profilepicture;
 
