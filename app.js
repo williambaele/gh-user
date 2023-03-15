@@ -2,9 +2,30 @@ let user = "williambaele";
 let form = document.querySelector('#form');
 getUser(user);
 let input = document.querySelector('#input');
+getRepositoriesUser(user);
 
 
+/* REPOS CALL */
+function getRepositoriesUser(user){
+  const url = 'https://api.github.com/users/' + user + '/repos'
+  let request = new XMLHttpRequest();
+  request.open('GET', url);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+    if (request.readyState === XMLHttpRequest.DONE){
+      if (request.status === 200){
+        let answer = request.response
+        console.log('Ok with the repo API');
 
+      }
+      else {
+        console.log('Issue with the repo API');
+      }
+    }}
+}
+
+/* USER INFO CALL */
 function getUser(user) {
   const url = 'https://api.github.com/users/' + user;
   let request = new XMLHttpRequest();
@@ -57,21 +78,3 @@ function getUser(user) {
     }
   }
 }
-
-
-// Etape 5 - Agir à l'envoi du formulaire
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  if(input.value == ''){
-     // Mettre notre bordure de formulaire en rouge (red)
-    input.style.borderColor = "red";
-    console.log("error brrrrr");
-
-  }
-  else {
-    // Mettre notre bordure de formulaire en gris (silver)
-    let user = input.value;
-    getUser(user);
-  }
-});
