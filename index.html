@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GitHub Profile</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥</text></svg>">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-800 mx-auto">
@@ -30,7 +31,7 @@
   </div>
   <!-- CONTENT -->
   <div class="container mx-auto flex px-4 md:px-0">
-    <div class="grid md:grid-cols-4 w-full my-20">
+    <div class="grid md:grid-cols-4 w-full mt-20 mb-10 gap-4 md:gap-0">
       <div class="md:col-span-1 flex justify-center md:flex-none md:justify-start">
         <img id="profilepicture"src="" class="rounded-full h-48 justify-center flex" alt="">
       </div>
@@ -81,8 +82,16 @@
       </div>
     </div>
   </div>
-
-  <button id="change">CM</button>
+  <div class="mx-auto container px-4 md:px-0">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="w-full bg-green-200">
+        <h1 class="text-white text-2xl">All public repositories</h1>
+      </div>
+      <div class="w-full bg-yellow-200">
+        <h1 class="text-white text-2xl">All followers</h1>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
