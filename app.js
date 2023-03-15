@@ -1,10 +1,8 @@
 let user = "williambaele";
+let form = document.querySelector('#form');
 getUser(user);
-// let btnchange = document.querySelector("#change");
-// btnchange.addEventListener('click', () => {
-//   city = prompt('Which city ?');
-//   getTemperature(city);
-// })
+let input = document.querySelector('#input');
+
 
 function getUser(user) {
   const url = 'https://api.github.com/users/' + user;
@@ -20,7 +18,12 @@ function getUser(user) {
         let answer = request.response
         let username = answer.name;
         let location = answer.location;
-        // document.querySelector("#username").textContent = username;
+        let description = answer.bio;
+        let profilepicture = answer.avatar_url
+        document.querySelector("#username").textContent = username;
+        document.querySelector("#description").textContent = description;
+        document.getElementById("profilepicture").src = profilepicture;
+
         // labelcity.textContent = city;
         console.log(username);
         console.log(location);
@@ -31,3 +34,21 @@ function getUser(user) {
     }
   }
 }
+
+
+// Etape 5 - Agir à l'envoi du formulaire
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  if(input.value == ''){
+     // Mettre notre bordure de formulaire en rouge (red)
+    input.style.borderColor = "red";
+    console.log("error brrrrr");
+
+  }
+  else {
+    // Mettre notre bordure de formulaire en gris (silver)
+    let user = input.value;
+    getUser(user);
+  }
+});
