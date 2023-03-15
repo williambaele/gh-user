@@ -43,6 +43,7 @@ function getUser(user) {
         document.querySelector("#lastactivity").textContent = lastactivity.toLocaleDateString();
         document.querySelector("#location").textContent = location;
         document.getElementById("url").href= profileurl;
+        document.querySelector("#website").href = 'https://www.'+ website;
         document.querySelector("#description").textContent = description;
         document.getElementById("profilepicture").src = profilepicture;
 
