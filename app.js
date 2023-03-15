@@ -17,14 +17,14 @@ function getRepositoriesUser(user){
       if (request.status === 200){
         let answer = request.response
         console.log('Ok with the repo API');
-
+        let nbRepos = answer.length;
+        document.querySelector("#nbrepos").textContent = nbRepos;
       }
       else {
         console.log('Issue with the repo API');
       }
     }}
 }
-
 /* USER INFO CALL */
 function getUser(user) {
   const url = 'https://api.github.com/users/' + user;
@@ -78,3 +78,23 @@ function getUser(user) {
     }
   }
 }
+
+
+// Etape 5 - Agir à l'envoi du formulaire
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  if(input.value == ''){
+     // Mettre notre bordure de formulaire en rouge (red)
+    input.style.borderColor = "red";
+    console.log("error brrrrr");
+
+  }
+  else {
+    // Mettre notre bordure de formulaire en gris (silver)
+    let user = input.value;
+    getUser(user);
+    getRepositoriesUser(user);
+
+  }
+});
