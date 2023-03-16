@@ -19,6 +19,11 @@ function getFollowerUser(user){
         console.log('Ok with the repo API');
         let nbFollowers = answer.length;
         document.querySelector("#nbfollowers").textContent = nbFollowers;
+        let followerNames = '';
+        for (let i = 0; i < answer.length; i++) {
+          followerNames += '<h1 class="text-5xl">' + answer[i].login + '</h1>';
+        }
+        document.querySelector('#follower-name').innerHTML = followerNames;
       }
       else {
         console.log('Issue with the repo API');
