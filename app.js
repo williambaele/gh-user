@@ -3,7 +3,28 @@ let form = document.querySelector('#form');
 getUser(user);
 let input = document.querySelector('#input');
 getRepositoriesUser(user);
+getFollowerUser(user);
 
+/* FOLLOWERS CALL */
+function getFollowerUser(user){
+  const url = 'https://api.github.com/users/' + user + '/followers'
+  let request = new XMLHttpRequest();
+  request.open('GET', url);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+    if (request.readyState === XMLHttpRequest.DONE){
+      if (request.status === 200){
+        let answer = request.response
+        console.log('Ok with the repo API');
+        let nbFollowers = answer.length;
+        document.querySelector("#nbfollowers").textContent = nbFollowers;
+      }
+      else {
+        console.log('Issue with the repo API');
+      }
+    }}
+}
 
 /* REPOS CALL */
 function getRepositoriesUser(user){
@@ -95,6 +116,7 @@ form.addEventListener('submit', (e) => {
     let user = input.value;
     getUser(user);
     getRepositoriesUser(user);
+    getFollowerUser(user);
 
   }
 });
