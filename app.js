@@ -16,14 +16,16 @@ function getFollowerUser(user){
     if (request.readyState === XMLHttpRequest.DONE){
       if (request.status === 200){
         let answer = request.response
-        console.log('Ok with the repo API');
+        console.log('Ok with the Follower API');
         let nbFollowers = answer.length;
         document.querySelector("#nbfollowers").textContent = nbFollowers;
         let followerNames = '';
         for (let i = 0; i < answer.length; i++) {
-          followerNames += '<h1 class="text-5xl">' + answer[i].login + '</h1>';
+          let profilepicture = answer[i].avatar_url;
+          let followerUrl = answer[i].html_url;
+          followerNames += '<a href="' + 'https://github.com/'+ answer[i].login +' " id="urlfollower"><div class="p-3 bg-slate-200 hover:bg-slate-100 rounded grid justify-center"><img class="rounded" src="' + profilepicture +'"><h2 class="text-xl text-center text-gray-700 mt-2">' + answer[i].login + '</h2></div></a>';
         }
-        document.querySelector('#follower-name').innerHTML = followerNames;
+        document.querySelector('#followercard').innerHTML = followerNames;
       }
       else {
         console.log('Issue with the repo API');
@@ -45,6 +47,20 @@ function getRepositoriesUser(user){
         console.log('Ok with the repo API');
         let nbRepos = answer.length;
         document.querySelector("#nbrepos").textContent = nbRepos;
+        let reposNames = '';
+        for (let i = 0; i < answer.length; i++) {
+          console.log(answer[i].name);
+          let languageRepo = answer[i].language
+          if(languageRepo === null){
+            languageRepo = "No main language";
+          } else {
+            let languageRepo = answer[i].language;
+          }
+          reposNames += '<a href="' + 'https://github.com/'+ answer[i].html_url +' " id="urlfollower"><div class="p-3 bg-slate-200 hover:shadow-md rounded gap-3 grid justify-center hover:bg-slate-100"><h2 class="text-xl text-center text-gray-700 mt-2 font-medium">' + answer[i].name + '</h2><p class="text-md text-center">' + languageRepo + '</div></a>';
+
+        }
+        document.querySelector('#repocard').innerHTML = reposNames;
+
       }
       else {
         console.log('Issue with the repo API');

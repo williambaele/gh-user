@@ -82,24 +82,19 @@
       </div>
     </div>
   </div>
-  <div class="mx-auto container px-4 md:px-0">
+  <div class="mx-auto container px-4 md:px-0 mb-10">
     <div class="grid md:grid-cols-2 gap-6">
       <div class="w-full">
         <h1 class="text-white text-2xl pl-3 bg-slate-600 p-1 rounded mb-5">All public repositories (<span id="nbrepos"></span>)</h1>
-        <div class="flex">
-          <div class="mx-2 bg-red-200">
-            <h1>Hi</h1>
-          </div>
-          <div class="mx-2 bg-green-200">
-            <h1>Hi</h1>
-          </div>
+        <div class="grid grid-cols-2 gap-4 mt-5" id="repocard">
+
         </div>
       </div>
       <div class="w-full">
         <h1 class="text-white text-2xl pl-3 bg-slate-600 p-1 rounded">All followers (<span id="nbfollowers"></span>)</h1>
-        <ul>
-          <li id="follower-name"></li>
-        </ul>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5" id="followercard">
+
+        </div>
       </div>
     </div>
   </div>
